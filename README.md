@@ -1,2 +1,3 @@
-# FoodPickr
-app for picking/voting food
+# food_pickr
+
+A new Flutter project to create my app.
