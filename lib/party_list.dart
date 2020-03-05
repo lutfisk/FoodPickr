@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PartyList extends StatefulWidget {
-  PartyList({Key key, this.title}) : super(key: key);
-  final String title;
+  PartyList({Key key}) : super(key: key);
   @override
   _PartyListState createState() => _PartyListState();
 }
@@ -19,7 +18,7 @@ class _PartyListState extends State<PartyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("FoodPickr"),
       ),
       body: Center(
         child: Column(
