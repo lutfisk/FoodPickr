@@ -1,44 +1,43 @@
 import 'package:flutter/material.dart';
+import 'auth.dart';
 
-class PartyList extends StatefulWidget {
-  PartyList({Key key}) : super(key: key);
-  @override
-  _PartyListState createState() => _PartyListState();
-}
+class PartyList extends StatelessWidget {
+  PartyList({this.auth, this.onSignedOut});
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
 
-class _PartyListState extends State<PartyList> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void _signOut() async {
+    try{
+      await auth.signOut();
+      onSignedOut();
+    }
+    catch (e) {
+      print(e);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[900],
       appBar: AppBar(
         title: Text("FoodPickr"),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Logout', 
+            style: TextStyle(fontSize: 17, 
+            color: Colors.blue)),
+            onPressed: _signOut
+          )
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+      body: Container(
+        child: Center(
+          child: Text('Welcome!', style: new TextStyle(fontSize: 32))
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
+
+
 }

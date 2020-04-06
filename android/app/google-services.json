@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "949766625564",
+    "firebase_url": "https://foodpickr-34f0e.firebaseio.com",
+    "project_id": "foodpickr-34f0e",
+    "storage_bucket": "foodpickr-34f0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949766625564:android:d2367f94ce334620a4c2d9",
+        "android_client_info": {
+          "package_name": "gg.lutfisk.foodpickr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949766625564-it1vti7q76tbsm188lf2avu28opa9u8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALrqyFNg3fF7JAsRs4u_E4JdL62_fMZ5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949766625564-it1vti7q76tbsm188lf2avu28opa9u8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
