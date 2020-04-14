@@ -1,3 +1,4 @@
 # food_pickr
 
-A new Flutter project to create my app.
+An app created with flutter and dart for
+user to decide where to eat next.
