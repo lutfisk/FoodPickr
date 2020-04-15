@@ -104,9 +104,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Image(
-                  image: AssetImage("assets/temp_logo.png"),
+                  image: AssetImage("assets/logo_copy.png"),
                   width: _logoAnimation.value * 350,
-                  height: _logoAnimation.value * 250,
+                  height: _logoAnimation.value * 240,
                   fit: BoxFit.contain,
                   ),
                   Form(

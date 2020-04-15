@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
+import 'foodpickr.dart';
 import 'root.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(FoodPickr(child: MyApp()));
 
 class MyApp extends StatelessWidget {
   @override

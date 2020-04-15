@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'party_list.dart';
-import 'party_user.dart';
-
-typedef OnDelete();
+import 'package:google_fonts/google_fonts.dart';
 
 class Party extends StatefulWidget {
   final state = _PartyState();
-  final OnDelete onDelete;
-  final PartyUser user;
+  final String partyName;
+  final Function delete;
 
-  Party({this.user, this.onDelete});
+  Party({this.partyName, this.delete});
 
   @override
   State<StatefulWidget> createState() => _PartyState();
@@ -21,19 +18,30 @@ class _PartyState extends State<Party>{
   @override 
   Widget build(BuildContext context){
     return Padding(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(6),
       child: Card(
-        child: Form(
+        elevation: 5,
+        child: InkWell(
+          onTap: (){
+            print("party clicked!");
+          },
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               AppBar(
-                leading: Icon(Icons.people),
-                title: Text(PartyUser().partyName),
+                backgroundColor: Colors.redAccent[600],
+                leading: Icon(Icons.people,
+                color: Colors.grey[400],
+                ),
+                title: Text(widget.partyName, 
+                  style: GoogleFonts.raleway(
+                    fontWeight: FontWeight.w700,
+                  )
+                ),
                 actions: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: widget.onDelete,
+                    icon: Icon(Icons.delete,
+                    color: Colors.black,),
+                    onPressed: widget.delete,
                   )
                 ],
               )
