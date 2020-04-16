@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'foodpickr.dart';
+import 'party_page.dart';
 
 class Party extends StatefulWidget {
   final state = _PartyState();
@@ -18,12 +20,14 @@ class _PartyState extends State<Party>{
   @override 
   Widget build(BuildContext context){
     return Padding(
-      padding: EdgeInsets.all(6),
+      padding: EdgeInsets.all(5),
       child: Card(
         elevation: 5,
         child: InkWell(
           onTap: (){
-            print("party clicked!");
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => 
+              PartyPage(FoodPickr.of(context).parties.indexOf(widget), widget.partyName)));
           },
           child: Column(
             children: <Widget>[
@@ -32,9 +36,11 @@ class _PartyState extends State<Party>{
                 leading: Icon(Icons.people,
                 color: Colors.grey[400],
                 ),
-                title: Text(widget.partyName, 
-                  style: GoogleFonts.raleway(
-                    fontWeight: FontWeight.w700,
+                title: Text(widget.partyName.toString(), 
+                  style: GoogleFonts.courgette(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[200],
+                    fontSize: 24,
                   )
                 ),
                 actions: <Widget>[
