@@ -81,7 +81,7 @@ class _PartyListState extends State<PartyList> {
                   onPressed: _signOut)
             ],
           ),
-          preferredSize: Size.fromHeight(65),
+          preferredSize: Size.fromHeight(60),
       ),
       body: Stack(
         fit: StackFit.expand,

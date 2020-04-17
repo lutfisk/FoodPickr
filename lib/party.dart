@@ -46,7 +46,9 @@ class _PartyState extends State<Party>{
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.delete,
-                    color: Colors.black,),
+                    color: Colors.black,
+                    ),
+                    tooltip: 'Delete party',
                     onPressed: widget.delete,
                   )
                 ],
