@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:date_format/date_format.dart';
 import 'dart:math';
 import 'party_history.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PartyPage extends StatefulWidget {
   final int index;
@@ -83,7 +84,9 @@ class _PartyPageState extends State<PartyPage> {
                 winner = temp;
                 var date = formatDate(DateTime.now(), [d, '-', M, '-', yyyy]);
                 winners.add(date + ' you ate ' + winner);
+                String url = ("https://www.google.com/search?q=" + winner + "+near+me&oq=" + winner + "+near+me");
                 Navigator.of(context).pop();
+                launch(url);
               },
             ),
             FlatButton(

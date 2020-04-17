@@ -13,7 +13,7 @@ class PartyHistory extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           Image(
-            image: AssetImage("assets/crabby.jpg"),
+            image: AssetImage("assets/gf.jpg"),
             fit: BoxFit.cover,
             color: Colors.black87,
             colorBlendMode: BlendMode.darken,
@@ -39,7 +39,7 @@ class PartyHistory extends StatelessWidget {
                   itemBuilder: (food, index) {
                     return Container(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(20, 2, 20, 20),
+                        padding: EdgeInsets.fromLTRB(20, 2, 20, 10),
                         child: Card(
                           color: Colors.transparent,
                           elevation: 5,
