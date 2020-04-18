@@ -56,6 +56,7 @@ class _PartyListState extends State<PartyList> {
   @override
   Widget build(BuildContext context) {
     FoodPickr fp = FoodPickr.of(context);
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       appBar: PreferredSize(

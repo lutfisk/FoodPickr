@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_format/date_format.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
 import 'party_history.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'database.dart';
 
 class PartyPage extends StatefulWidget {
-  final int index;
   final String partyName;
-  PartyPage(this.index, this.partyName);
+  final List<String> winners;
+  PartyPage(this.partyName, this.winners);
 
   @override
   State<StatefulWidget> createState() => _PartyPageState();
@@ -16,7 +17,6 @@ class PartyPage extends StatefulWidget {
 
 class _PartyPageState extends State<PartyPage> {
   List<String> items = [];
-  List<String> winners = [];
   Random rand = Random();
   
   String temp;
@@ -83,9 +83,10 @@ class _PartyPageState extends State<PartyPage> {
               onPressed: () {
                 winner = temp;
                 var date = formatDate(DateTime.now(), [d, '-', M, '-', yyyy]);
-                winners.add(date + ' you ate ' + winner);
+                widget.winners.add(date + ' you ate ' + winner);
                 String url = ("https://www.google.com/search?q=" + winner + "+near+me&oq=" + winner + "+near+me");
                 Navigator.of(context).pop();
+                Database.saveWinners(widget.winners);
                 launch(url);
               },
             ),
@@ -121,11 +122,13 @@ class _PartyPageState extends State<PartyPage> {
                 icon: Icon(Icons.access_time),
                 tooltip: 'Past winners',
                 onPressed: () {
-                  print(winners);
+                  print(widget.winners);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PartyHistory(winners)));
+                      builder: (context) => PartyHistory(widget.winners)
+                    ),
+                  );
                 },
               ),
             ],

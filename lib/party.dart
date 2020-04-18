@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'foodpickr.dart';
 import 'party_page.dart';
 
 class Party extends StatefulWidget {
   final state = _PartyState();
   final String partyName;
   final Function delete;
+  final List<String> winners = [];
 
   Party({this.partyName, this.delete});
 
@@ -27,7 +27,7 @@ class _PartyState extends State<Party>{
           onTap: (){
             Navigator.push(context,
               MaterialPageRoute(builder: (context) => 
-              PartyPage(FoodPickr.of(context).parties.indexOf(widget), widget.partyName)));
+              PartyPage(widget.partyName, widget.winners)));
           },
           child: Column(
             children: <Widget>[
