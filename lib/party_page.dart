@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_format/date_format.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'foodpickr.dart';
 import 'dart:math';
+import 'party.dart';
 import 'party_history.dart';
-import 'database.dart';
 
 class PartyPage extends StatefulWidget {
-  final String partyName;
-  final List<String> winners;
-  PartyPage(this.partyName, this.winners);
+
+  final Party party;
+  
+  PartyPage({@required this.party});
 
   @override
   State<StatefulWidget> createState() => _PartyPageState();
@@ -83,10 +85,11 @@ class _PartyPageState extends State<PartyPage> {
               onPressed: () {
                 winner = temp;
                 var date = formatDate(DateTime.now(), [d, '-', M, '-', yyyy]);
-                widget.winners.add(date + ' you ate ' + winner);
+                widget.party.pastWinners.add(date + ' you ate ' + winner);
+                FoodPickr.of(context).syncUpload();
                 String url = ("https://www.google.com/search?q=" + winner + "+near+me&oq=" + winner + "+near+me");
                 Navigator.of(context).pop();
-                Database.saveWinners(widget.winners);
+                print(widget.party.pastWinners);
                 launch(url);
               },
             ),
@@ -109,7 +112,7 @@ class _PartyPageState extends State<PartyPage> {
       appBar: PreferredSize(
         child: AppBar(
           backgroundColor: Colors.red[900],
-          title: Text(widget.partyName,
+          title: Text(widget.party.partyName,
           style: GoogleFonts.lobster(
             color: Colors.grey[300],
             fontStyle: FontStyle.italic,
@@ -122,11 +125,11 @@ class _PartyPageState extends State<PartyPage> {
                 icon: Icon(Icons.access_time),
                 tooltip: 'Past winners',
                 onPressed: () {
-                  print(widget.winners);
+                  print(widget.party.pastWinners);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PartyHistory(widget.winners)
+                      builder: (context) => PartyHistory(widget.party.pastWinners)
                     ),
                   );
                 },

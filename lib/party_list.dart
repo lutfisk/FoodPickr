@@ -57,6 +57,7 @@ class _PartyListState extends State<PartyList> {
   Widget build(BuildContext context) {
     FoodPickr fp = FoodPickr.of(context);
 
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       appBar: PreferredSize(
@@ -108,11 +109,12 @@ class _PartyListState extends State<PartyList> {
             itemCount: fp.parties.length,
             itemBuilder: (_, i) => Party(
               partyName: fp.parties[i].partyName,
-              delete: () {
-                setState(() {
-                  fp.parties.removeAt(i);
-                });
-              },
+              pastWinners: [],
+              // delete: () {
+              //   setState(() {
+              //     fp.parties.removeAt(i);
+              //   });  
+              // },  
             ),
           ),
         ],
@@ -132,7 +134,9 @@ class _PartyListState extends State<PartyList> {
 
   void onAddParty(String name) {
     setState(() {
-      FoodPickr.of(context).parties.add(Party(partyName: name));
+      FoodPickr.of(context)
+        ..parties.add(Party(partyName: name))
+        ..syncUpload();
     });
   }
 }

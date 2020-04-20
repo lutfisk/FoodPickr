@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'party_page.dart';
 
+part 'party.g.dart';
+
+@JsonSerializable()
 class Party extends StatefulWidget {
   final state = _PartyState();
   final String partyName;
-  final Function delete;
-  final List<String> winners = [];
+  final List<String> pastWinners;
 
-  Party({this.partyName, this.delete});
+  Party({@required this.partyName, this.pastWinners});
 
   @override
   State<StatefulWidget> createState() => _PartyState();
+
+  factory Party.fromJson(Map<String, dynamic> json) => _$PartyFromJson(json);
+  Map<String, dynamic> toJson() => _$PartyToJson(this);
 }
 
 class _PartyState extends State<Party>{
@@ -27,7 +33,7 @@ class _PartyState extends State<Party>{
           onTap: (){
             Navigator.push(context,
               MaterialPageRoute(builder: (context) => 
-              PartyPage(widget.partyName, widget.winners)));
+              PartyPage(party: widget)));
           },
           child: Column(
             children: <Widget>[
@@ -49,7 +55,7 @@ class _PartyState extends State<Party>{
                     color: Colors.black,
                     ),
                     tooltip: 'Delete party',
-                    onPressed: widget.delete,
+                    onPressed: delete(widget.partyName),
                   )
                 ],
               )
@@ -58,5 +64,8 @@ class _PartyState extends State<Party>{
         )
       ),
     );
+  }
+  delete(String name){
+    return null;
   }
 }
