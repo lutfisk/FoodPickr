@@ -6,6 +6,8 @@ import 'package:flutter/painting.dart';
 import 'package:email_validator/email_validator.dart' as email_val;
 import 'package:form_field_validator/form_field_validator.dart' as form_val;
 
+import 'foodpickr.dart';
+
 class LoginPage extends StatefulWidget{
   LoginPage({this.auth, this.onSignedIn});
   final BaseAuth auth;

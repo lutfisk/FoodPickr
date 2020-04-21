@@ -49,15 +49,15 @@ class _PartyState extends State<Party>{
                     fontSize: 24,
                   )
                 ),
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.delete,
-                    color: Colors.black,
-                    ),
-                    tooltip: 'Delete party',
-                    onPressed: delete(widget.partyName),
-                  )
-                ],
+                // actions: <Widget>[
+                //   IconButton(
+                //     icon: Icon(Icons.delete,
+                //     color: Colors.black,
+                //     ),
+                //     tooltip: 'Delete party',
+                //     onPressed: delete(widget.partyName),
+                //   )
+                // ],
               )
             ],
           ),

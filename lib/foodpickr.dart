@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
@@ -13,7 +15,6 @@ class FoodPickr extends InheritedWidget{
   List<Party> parties = [];
 
   void syncUpload() {
-
     DatabaseReference ref = FirebaseDatabase.instance.reference();
     String uid;
     Auth().currentUser().then((String val) {
@@ -30,8 +31,30 @@ class FoodPickr extends InheritedWidget{
         print(err);
       });
     });
-
   }
+
+  void syncDownload() {
+  DatabaseReference ref = FirebaseDatabase.instance.reference();
+  String uid;
+  Auth().currentUser().then((String val) {
+    uid = val;
+    print(uid);
+    ref = ref.child("Accounts/$uid");
+
+    DatabaseReference partiesRef = ref.child("/Parties");
+
+    partiesRef.once().then((DataSnapshot ds) {
+      parties = [];
+      print(ds.value);
+
+      ds.value.forEach((k, v) {
+        if (!parties.contains(Party(partyName: v))) parties.add(Party(partyName: v));
+      });
+      }).catchError((err) {
+        print(err);
+      });
+    });
+  }  
 
   static FoodPickr of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<FoodPickr>();

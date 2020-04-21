@@ -14,6 +14,6 @@ Party _$PartyFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PartyToJson(Party instance) => <String, dynamic> {
-  'partyName': instance.partyName,
-  'winners': instance.pastWinners,
+  'Party': instance.partyName,
+  'Winners': instance.pastWinners,
 };

@@ -56,8 +56,7 @@ class _PartyListState extends State<PartyList> {
   @override
   Widget build(BuildContext context) {
     FoodPickr fp = FoodPickr.of(context);
-
-
+  
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       appBar: PreferredSize(
@@ -109,7 +108,7 @@ class _PartyListState extends State<PartyList> {
             itemCount: fp.parties.length,
             itemBuilder: (_, i) => Party(
               partyName: fp.parties[i].partyName,
-              pastWinners: [],
+              pastWinners: fp.parties[i].pastWinners ?? [],
               // delete: () {
               //   setState(() {
               //     fp.parties.removeAt(i);
